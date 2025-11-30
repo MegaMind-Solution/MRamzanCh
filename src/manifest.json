@@ -21,25 +21,33 @@
     "height": 250,
     "width": 250,
   },
+  "shortcuts": [
+    {
+      "name": "Visit Blog",
+      "short_name": "Blog",
+      "url": "/",
+      "description": "Go to the homepage",
+      "icons": [
+        {
+        "src": "https://raw.githubusercontent.com/MegaMind-Solution/MegaMind-Solution/refs/heads/main/Img/My/MR-MRamzanCh%20New%20Time%20New%20Look_001.png",
+        "sizes": "192x192",
+        "type": "image/png"
+        }
+      ]
+    },
+    {
+    "name": "Contact Me",
+    "short_name": "Contact",
+    "url": "#contact",
+    "description": "Go to contact",
+    "icons": [
+      {
+        "src": "https://raw.githubusercontent.com/MegaMind-Solution/MegaMind-Solution/refs/heads/main/Img/My/MR-MRamzanCh%20New%20Time%20New%20Look_001.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ]
+  }
+]
 }
 
-<script>
-const swCode = `
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open('ramzan-cache-v1').then(cache => cache.addAll(['/','/?m=1']))
-  );
-});
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(response => response || fetch(e.request))
-  );
-});
-`;
-const blob = new Blob([swCode], { type: 'application/javascript' });
-const swURL = URL.createObjectURL(blob);
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register(swURL);
-}
-</script>
